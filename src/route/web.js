@@ -18,7 +18,8 @@ let initWebRouters = (app) => {
 
 
 
-    router.post('/api/login', userController.HandleLogin)
+    router.post('/api/login', userController.HandleLogin);
+    router.get('/api/get-all-users', userController.HandleGetAllUsers);
 
     return app.use("/", router);
 }
