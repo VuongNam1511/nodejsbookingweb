@@ -26,7 +26,7 @@ let HandleLogin = async (req, res) => {
 }
 
 let HandleGetAllUsers = async (req, res) => {
-    let id = req.body.id; //All, id
+    let id = req.query.id; //All, id
 
     if (!id) {
         return res.status(200).json({
@@ -37,7 +37,11 @@ let HandleGetAllUsers = async (req, res) => {
 
     }
     let users = await userService.getAllUsers(id);
-    console.log(users)
+    return res.status(200).json({
+        errCode: 0,
+        errMessage: 'OK',
+        users
+    })
 }
 
 module.exports = {
