@@ -20,6 +20,10 @@ let initWebRouters = (app) => {
 
     router.post('/api/login', userController.HandleLogin);
     router.get('/api/get-all-users', userController.HandleGetAllUsers);
+    router.post('/api/create-new-user', userController.HandleCreateNewUser);
+    router.put('/api/edit-user', userController.HandleEditUser);
+    router.delete('/api/delete-user', userController.HandleDeleteUser); //restAPI
+
 
     return app.use("/", router);
 }
