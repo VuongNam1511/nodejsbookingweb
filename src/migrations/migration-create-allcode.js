@@ -8,10 +8,10 @@ module.exports = {
                 primaryKey: true,
                 type: Sequelize.INTEGER
             },
-            key: {
+            keyMap: {
                 type: Sequelize.STRING
             },
-            ftype: {
+            type: {
                 type: Sequelize.STRING
             },
             valueEn: {
