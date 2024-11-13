@@ -1,5 +1,6 @@
 import { raw } from "body-parser";
 import db from "../models";
+import { where } from "sequelize";
 
 let getTopDoctorHome = (limitInput) => {
     return new Promise(async (resolve, reject) => {
@@ -29,6 +30,54 @@ let getTopDoctorHome = (limitInput) => {
     })
 }
 
+let getAllDoctors = () => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let doctors = await db.User.findAll({
+                where: { roleId: 'R2' },
+                attributes: {
+                    exclude: ['password', 'image']
+                },
+            })
+
+            resolve({
+                errCode: 0,
+                data: doctors
+            })
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
+
+let saveDetailInforDoctor = (inputData) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            if (!inputData.doctorId || !inputData.contentHTML || !inputData.contentMarkdown) {
+                resolve({
+                    errCode: 1,
+                    errMessage: 'Missing requered Parameter'
+                })
+            } else {
+                await db.Markdown.create({
+                    contentHTML: inputData.contentHTML,
+                    contentMarkdown: inputData.contentMarkdown,
+                    description: inputData.description,
+                    doctorId: inputData.doctorId
+                })
+                resolve({
+                    errCode: 0,
+                    errMessage: 'Save doctor infor'
+                })
+            }
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
+
 module.exports = {
-    getTopDoctorHome: getTopDoctorHome
+    getTopDoctorHome: getTopDoctorHome,
+    getAllDoctors: getAllDoctors,
+    saveDetailInforDoctor: saveDetailInforDoctor
 }
