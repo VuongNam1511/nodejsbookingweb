@@ -2,7 +2,7 @@ import { raw } from "body-parser";
 import db from "../models";
 import { where } from "sequelize";
 require('dotenv').config();
-import _, { iteratee } from 'lodash'
+import _, { includes, iteratee } from 'lodash'
 const MAX_NUMBER_SCHEDULE = process.env.MAX_NUMBER_SCHEDULE;
 let getTopDoctorHome = (limitInput) => {
     return new Promise(async (resolve, reject) => {
@@ -154,6 +154,20 @@ let getDetailDoctorById = (inputId) => {
                         },
 
                         { model: db.Allcode, as: 'positionData', attributes: ['valueEn', 'valueVi'] },
+                        {
+                            model: db.Doctor_Infor,
+                            attributes: {
+                                exclude: ['id', 'doctorId']
+                            },
+                            include: [
+                                { model: db.Allcode, as: 'priceTypeData', attributes: ['valueEn', 'valueVi'] },
+                                { model: db.Allcode, as: 'provinceTypeData', attributes: ['valueEn', 'valueVi'] },
+                                { model: db.Allcode, as: 'paymentTypeData', attributes: ['valueEn', 'valueVi'] },
+
+
+                            ]
+
+                        },
 
                     ],
                     raw: false,
