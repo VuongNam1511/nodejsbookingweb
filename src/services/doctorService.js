@@ -122,7 +122,7 @@ let saveDetailInforDoctor = (inputData) => {
 
                 resolve({
                     errCode: 0,
-                    errMessage: 'Save doctor infor'
+                    errMessage: 'Save doctor infor succeed!'
                 })
             }
         } catch (e) {
