@@ -430,6 +430,10 @@ let getListPatientForDoctor = (doctorId, date) => {
                                 { model: db.Allcode, as: 'genderData', attributes: ['valueEn', 'valueVi'] },
                             ]
                         },
+                        {
+                            model: db.Allcode, as: 'timeTypeDataPatient', attributes: ['valueEn', 'valueVi']
+                        },
+
                     ],
                     raw: false, //trả ra output dạng sequelize object
                     nest: true  //trả ra output dạng object in object
