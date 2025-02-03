@@ -6,9 +6,9 @@ module.exports = {
       {
         email: 'admin@gmail.com',
         password: '123456',
-        firstName: 'HoiDanIt',
-        lastName: 'Eric',
-        address: 'USA',
+        firstName: 'Nam',
+        lastName: 'Vuong',
+        address: 'Viet Nam',
         gender: '1',
         typeRole: 'ROLE',
         keyRole: 'R1',
