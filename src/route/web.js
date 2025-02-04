@@ -5,6 +5,7 @@ import doctorController from "../controllers/doctorController";
 import patientController from "../controllers/patientController"
 import specialtyController from "../controllers/specialtyController";
 import clinicController from "../controllers/clinicController";
+import handbookController from "../controllers/handbookController"
 
 let router = express.Router();
 
@@ -47,6 +48,10 @@ let initWebRouters = (app) => {
     router.post('/api/create-new-clinic', clinicController.createClinic);
     router.get('/api/get-clinic', clinicController.getAllClinic);
     router.get('/api/get-detail-clinic-by-id', clinicController.getDetailClinicById);
+
+    router.post('/api/create-new-handbook', handbookController.createHandBook);
+    router.get('/api/get-all-handbook', handbookController.getAllHandBook);
+    router.get('/api/get-detail-handbook-by-id', handbookController.getDetailHandBookById);
 
 
     return app.use("/", router);
