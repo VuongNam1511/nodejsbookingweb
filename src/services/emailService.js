@@ -14,7 +14,7 @@ let sendSimpleEmail = async (dataSend) => {
     });
     // send mail with defined transport object
     const info = await transporter.sendMail({
-        from: '"VVN Booking Web App" <vuongthanhthao2468@gmail.com>', // sender address
+        from: '"Dat Lich Kham Benh" <vuongthanhthao2468@gmail.com>', // sender address
         to: dataSend.receiverEmail, // list of receivers
         subject: "Thông tin đặt lịch khám bệnh", // Subject line
         html: getBodyHTMLEmail(dataSend), // html body
@@ -64,7 +64,7 @@ let getBodyHTMLEmailRemedy = (dataSend) => {
         <h3>Kính gửi ${dataSend.patientName}!</h3>
         <p>Bạn đã đăng ký khám Thành Công. Chúng tôi rất hân hạnh được phục vụ bạn.</p>
         <p>Dưới đây là thông tin đặt lịch khám bệnh của bạn:</p>
-        <div>Thông tin đơn thuốc và hóa đơn được gửi trong file đính kèm </div>
+        <div>Thông tin đơn thuốc và bệnh án được gửi trong file đính kèm </div>
         `
     }
     if (dataSend.language === 'en') {

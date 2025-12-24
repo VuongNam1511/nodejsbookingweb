@@ -420,7 +420,7 @@ let getListPatientForDoctor = (doctorId, date) => {
             } else {
                 let data = await db.Booking.findAll({
                     where: {
-                        statusId: 'S2',
+                        statusId: ['S2', 'S1', 'S3'],
                         doctorId: doctorId,
                         date: date
                     },
@@ -434,6 +434,9 @@ let getListPatientForDoctor = (doctorId, date) => {
                         },
                         {
                             model: db.Allcode, as: 'timeTypeDataPatient', attributes: ['valueEn', 'valueVi']
+                        },
+                        {
+                            model: db.Allcode, as: 'statusDataPatient', attributes: ['valueEn', 'valueVi']
                         },
 
                     ],
